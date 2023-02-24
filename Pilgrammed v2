@@ -1,6 +1,6 @@
 --https://discord.gg/geKsK6jUPz
 -- list of allowed usernames
-local allowedUsernames = {"NIITRIX_ALICE", "AsuraTheAbysswalker", "LeadsMain", "Kunshu_x"}
+local allowedUsernames = {"NIITRIX_ALICE", "AsuraTheAbysswalker", "Kunshu_x", "."}
 
 -- get the current player
 local player = game.Players.LocalPlayer
