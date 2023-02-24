@@ -4,7 +4,7 @@ local Window = Library.CreateLib("L00MABLE", "Synapse")
 local Esp = Window:NewTab("Pilgrammed Esp")
 local EspSection = Esp:NewSection("Esp")
 
-
+-- Meteor esp
 
 EspSection:NewButton("Meteor Esp (🟢)", "Currently working with no issues", function()
         local partName = "Meteor" -- replace with the name of the part you're checking for
@@ -39,5 +39,19 @@ while true do
     end
  
     wait(5) -- wait 5 seconds before running the loop again
+end
+end)
+
+--Meteor tp
+EspSection:NewButton("Meteor Tp(🟢)", "Teleports a player right above the meteor", function()
+    local meteor = workspace:FindFirstChild("Meteor")
+
+if meteor then
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    character:SetPrimaryPartCFrame(meteor.CFrame + Vector3.new(0, 10, 0))
+else
+    print("Meteor not found! Use this when a meteor is spawned")
 end
 end)
