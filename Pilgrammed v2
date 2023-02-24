@@ -1,4 +1,40 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+-- list of allowed usernames
+local allowedUsernames = {"NIITRIX_ALICE", "AsuraTheAbysswalker", "LeadsMain", "Kunshu_x"}
+
+-- get the current player
+local player = game.Players.LocalPlayer
+
+-- check if the player's username is in the allowed list
+if table.find(allowedUsernames, player.Name) then
+  -- create a new ScreenGui object to hold our message
+  local gui = Instance.new("ScreenGui")
+  gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+  -- create a new TextLabel to display the message
+  local label = Instance.new("TextLabel")
+  label.Size = UDim2.new(1, 0, 0.5, 0)
+  label.Position = UDim2.new(0, 0, 0.25, 0)
+  label.BackgroundColor3 = Color3.new(0, 0, 0)
+  label.BackgroundTransparency = 0.5
+  label.Font = Enum.Font.Arcade
+  label.TextColor3 = Color3.new(1, 1, 1)
+  label.TextSize = 36
+  label.Text = "Loading main script for ".. player.Name
+  label.Parent = gui
+  
+  Wait(5)
+  
+  label.Text = "Correct User, you have access ".. player.Name
+ 
+  
+  Wait(2)
+  
+  label.Visible = false
+  
+  
+  Wait(0.5)
+  local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("L00MABLE", "Synapse")
 
 local Esp = Window:NewTab("Pilgrammed Esp")
@@ -55,3 +91,6 @@ else
     print("Meteor not found! Use this when a meteor is spawned")
 end
 end)
+else
+  game:Shutdown()
+end
