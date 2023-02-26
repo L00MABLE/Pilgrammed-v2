@@ -1,0 +1,96 @@
+--https://discord.gg/geKsK6jUPz
+-- list of allowed usernames
+local allowedUsernames = {"NIITRIX_ALICE", "AsuraTheAbysswalker", "Kunshu_x", "FOURTH_USERNAME", "FIFTH_USERNAME"}
+
+-- get the current player
+local player = game.Players.LocalPlayer
+
+-- check if the player's username is in the allowed list
+if table.find(allowedUsernames, player.Name) then
+  -- create a new ScreenGui object to hold our message
+  local gui = Instance.new("ScreenGui")
+  gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+  -- create a new TextLabel to display the message
+  local label = Instance.new("TextLabel")
+  label.Size = UDim2.new(1, 0, 0.5, 0)
+  label.Position = UDim2.new(0, 0, 0.25, 0)
+  label.BackgroundColor3 = Color3.new(0, 0, 0)
+  label.BackgroundTransparency = 0.5
+  label.Font = Enum.Font.Arcade
+  label.TextColor3 = Color3.new(1, 1, 1)
+  label.TextSize = 36
+  label.Text = "Loading main script for ".. player.Name
+  label.Parent = gui
+  
+  Wait(5)
+  
+  label.Text = "Correct User, you have access ".. player.Name
+ 
+  
+  Wait(2)
+  
+  label.Visible = false
+  
+  
+  Wait(0.5)
+  local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("L00MABLE", "Synapse")
+
+local Esp = Window:NewTab("Pilgrammed Esp")
+local EspSection = Esp:NewSection("Esp")
+
+-- Meteor esp
+
+EspSection:NewButton("Meteor Esp (🟢)", "Currently working with no issues", function()
+        local partName = "Meteor" -- replace with the name of the part you're checking for
+local soundId = "rbxassetid://6160675006" -- replace with the ID of the sound you want to play
+local volume = 100 -- starting volume, can be changed later
+ 
+while true do
+    local part = workspace:FindFirstChild(partName)
+ 
+    if part then
+        local sound = Instance.new("Sound")
+        sound.SoundId = soundId
+        sound.Parent = part
+        sound.Volume = volume
+        sound:Play()
+ 
+        wait(2) -- wait 2 seconds before highlighting and printing CFrame
+ 
+        local highlight = Instance.new("BoxHandleAdornment")
+        highlight.Name = "highlight"
+        highlight.Adornee = part
+        highlight.Size = part.Size + Vector3.new(0.1, 0.1, 0.1)
+        highlight.AlwaysOnTop = true
+        highlight.Color3 = Color3.fromRGB(255, 255, 0)
+        highlight.Transparency = 0.5
+        highlight.ZIndex = 10
+        highlight.Parent = part
+ 
+        print("Part is in workspace with CFrame: ", part.CFrame)
+    else
+        print("Part not found in workspace.")
+    end
+ 
+    wait(5) -- wait 5 seconds before running the loop again
+end
+end)
+
+--Meteor tp
+EspSection:NewButton("Meteor Tp(🟢)", "Teleports a player right above the meteor", function()
+    local meteor = workspace:FindFirstChild("Meteor")
+
+if meteor then
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    character:SetPrimaryPartCFrame(meteor.CFrame + Vector3.new(0, 10, 0))
+else
+    print("Meteor not found! Use this when a meteor is spawned")
+end
+end)
+else
+  game:Shutdown()
+end
